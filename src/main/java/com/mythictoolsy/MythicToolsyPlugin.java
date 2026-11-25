@@ -23,6 +23,7 @@ public final class MythicToolsyPlugin extends JavaPlugin {
         saveDefaultConfig();
 
         itemCreatorGUI = new ItemCreatorGUI(this);
+
         getServer().getPluginManager()
                 .registerEvents(itemCreatorGUI, this);
 
@@ -39,19 +40,23 @@ public final class MythicToolsyPlugin extends JavaPlugin {
         getLogger().info("MythicToolsy disabled!");
     }
 
-    private boolean onCommand(
+    @Override
+    public boolean onCommand(
             CommandSender sender,
             Command command,
             String label,
             String[] args
     ) {
-        if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
+        if (args.length == 0
+                || args[0].equalsIgnoreCase("help")) {
             sendHelp(sender);
             return true;
         }
 
         if (!(sender instanceof Player player)) {
-            sender.sendMessage("This command can only be used in-game.");
+            sender.sendMessage(
+                    "This command can only be used in-game."
+            );
             return true;
         }
 
@@ -70,7 +75,8 @@ public final class MythicToolsyPlugin extends JavaPlugin {
                     return true;
                 }
 
-                String itemId = args[1].toLowerCase(Locale.ROOT);
+                String itemId =
+                        args[1].toLowerCase(Locale.ROOT);
 
                 if (itemId.length() > 32
                         || !itemId.matches("[a-z0-9_-]+")) {
@@ -86,6 +92,7 @@ public final class MythicToolsyPlugin extends JavaPlugin {
                 }
 
                 itemCreatorGUI.openCreate(player, itemId);
+
                 player.sendMessage(PREFIX
                         + "Creating item: " + itemId);
                 return true;
@@ -98,7 +105,8 @@ public final class MythicToolsyPlugin extends JavaPlugin {
                     return true;
                 }
 
-                String itemId = args[1].toLowerCase(Locale.ROOT);
+                String itemId =
+                        args[1].toLowerCase(Locale.ROOT);
 
                 if (!getConfig().contains("items." + itemId)) {
                     player.sendMessage(PREFIX + ChatColor.RED
@@ -112,16 +120,20 @@ public final class MythicToolsyPlugin extends JavaPlugin {
 
             case "list" -> {
                 if (!getConfig().isConfigurationSection("items")) {
-                    player.sendMessage(PREFIX + "No items created yet.");
+                    player.sendMessage(PREFIX
+                            + "No items created yet.");
                     return true;
                 }
 
                 player.sendMessage(PREFIX + "Created items:");
 
                 for (String item :
-                        getConfig().getConfigurationSection("items")
+                        getConfig()
+                                .getConfigurationSection("items")
                                 .getKeys(false)) {
-                    player.sendMessage(ChatColor.GRAY + " - " + item);
+                    player.sendMessage(
+                            ChatColor.GRAY + " - " + item
+                    );
                 }
 
                 return true;
@@ -129,6 +141,7 @@ public final class MythicToolsyPlugin extends JavaPlugin {
 
             case "reload" -> {
                 reloadConfig();
+
                 player.sendMessage(PREFIX + ChatColor.GREEN
                         + "Configuration reloaded!");
                 return true;
@@ -149,4 +162,4 @@ public final class MythicToolsyPlugin extends JavaPlugin {
         sender.sendMessage("§7/mw reload");
         sender.sendMessage("§7/mw help");
     }
-}
+        }
