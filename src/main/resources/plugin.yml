@@ -1,0 +1,19 @@
+
+name: MythicToolsy
+version: 1.0.0
+main: com.mythictoolsy.MythicToolsyPlugin
+api-version: '26.3'
+author: MythicToolsy
+description: Create custom mythic weapons, armor, tools, enchantments and abilities with powerful GUIs.
+
+commands:
+  mw:
+    description: Main MythicToolsy command
+    usage: /mw
+    aliases: [mythictoolsy, mythic]
+
+permissions:
+  mythictoolsy.admin:
+    description: Allows access to all MythicToolsy admin features
+    default: op
+    
