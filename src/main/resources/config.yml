@@ -1,0 +1,50 @@
+
+# MythicToolsy Configuration
+# Custom weapons, armor, tools and powers
+
+settings:
+  prefix: "&5[MythicToolsy] "
+  language: "en"
+  auto-save: true
+
+items: {}
+
+resource-pack:
+  enabled: false
+  auto-generate: true
+  model-format: "modern"
+  send-on-join: false
+
+textures:
+  default-model: "minecraft:item/generated"
+  custom-model-data-start: 10000
+
+gui:
+  title-create: "&5MythicToolsy &8» &dCreate"
+  title-editor: "&5MythicToolsy &8» &dEditor"
+  title-textures: "&5MythicToolsy &8» &dTextures"
+  title-powers: "&5MythicToolsy &8» &dPowers"
+
+powers:
+  fire:
+    enabled: true
+    cooldown: 10
+  lightning:
+    enabled: true
+    cooldown: 15
+  dash:
+    enabled: true
+    cooldown: 8
+  lifesteal:
+    enabled: true
+    cooldown: 12
+  freeze:
+    enabled: true
+    cooldown: 20
+  wind:
+    enabled: true
+    cooldown: 10
+  secondchance:
+    enabled: true
+    cooldown: 60
+    
